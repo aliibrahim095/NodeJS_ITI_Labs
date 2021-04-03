@@ -1,0 +1,30 @@
+{
+  "name": "express_server",
+  "version": "1.0.0",
+  "description": "express server and http requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliibrahim095/NodeJS_ITI_Labs.git"
+  },
+  "keywords": [
+    "express_server"
+  ],
+  "author": "aliibrahim095",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^7.2.0",
+    "express": "^4.17.1"
+  },
+  "bugs": {
+    "url": "https://github.com/aliibrahim095/NodeJS_ITI_Labs/issues"
+  },
+  "homepage": "https://github.com/aliibrahim095/NodeJS_ITI_Labs#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "nodemon": "^2.0.7"
+  }
+}
