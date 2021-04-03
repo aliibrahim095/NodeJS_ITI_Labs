@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 const port= 3000;
 const fs = require('fs');
+// import handle methods
+myfileOperations = require('./handle.js'); 
+
 const myTodosPath = '../CLI_Todos/todo.json';
 const path = require('path'); //to concatinate __dirname,anyfile --> to make absolutePath
                               //path.join(__dirname,"abc.json");
@@ -34,7 +37,10 @@ app.get(['/','/home'],function(req,res){
 })
 app.post('/post',(req,res)=>{
     //code logic for add to todo
-    return res.status(200).send({message: "todo created successfully"});
+
+    myfileOperations.addTodo(myTodosPath,req.body);
+    res.contentType('text/javascript');
+    return res.status(200).send("todo created successfully");
 })
 
 app.put('/:id', function (req, res) {

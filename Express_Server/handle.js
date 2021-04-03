@@ -49,7 +49,7 @@ function edit(path, id, newTodo ) {
     }
  }
 function deleteTask(path, id){
-	
+    console.log("delete method from handle file");
     let todos = readFile(path);
      todos = JSON.parse(todos || "[]");
 
@@ -62,4 +62,9 @@ function deleteTask(path, id){
 	}else{
 		console.log("No Tasks for delete .. !");
 	}
+}
+module.exports={
+    addTodo,
+    edit,
+    deleteTask
 }
