@@ -55,6 +55,7 @@ function deleteTask(path, id){
 
      if(todos.length > 0){
             //data execlude item
+            
              let data = todos.filter(function(item){
                 return item.id != id;
              })

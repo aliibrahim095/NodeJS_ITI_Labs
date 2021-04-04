@@ -49,12 +49,16 @@ app.post('/post',(req,res)=>{
 })
 
 app.put('/:id', function (req, res) {
+  const id  = req.params.id;
     //code logic for edit certain todo
     res.send('PUT request to Todos')
 })
 
 app.delete('/delete/:id', function (req, res) {
-    res.send('DELETE request from Todos')
+  const id = req.params.id;
+  console.log(id);
+    myfileOperations.deleteTask(myTodosPath,id);
+    res.status(200).send(`todo has id -->${id} deleted sucessfully`);
 })
 
 
