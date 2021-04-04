@@ -69,7 +69,8 @@ app.get(["/", "/todos"], function (req, res) {
 app.post("/todos", (req, res) => {
   //code logic for add to todo
 
-  console.log(req.body.todo);
+  console.log(req.body.todo);  console.log(req.body.todo);
+
   const { todo } = req.body;
   myfileOperations.addTodo(myTodosPath, todo);
   // res.contentType('application/json');
@@ -87,15 +88,16 @@ console.log();
 app.delete("/todos/:id", function (req, res) {
   const id = req.params.id;
   console.log(todoIds);
-  if (todos.length > 0) {
-    if (todoIds.includes(id)) {
+  if (todoIds.length > 0) {
+    if (todoIds.includes(parseInt(id))) {
       myfileOperations.deleteTask(myTodosPath, id);
-      return res.status(200).send(`todo has id -->${id} deleted sucessfully`);
+      res.status(200).send(`todo has id -->${id} deleted sucessfully`);
     } else {
-      return res.send("id not found").sendStatus(400);
+      res.send("id not found").sendStatus(400);
     }
   } else {
-    return res.send("there is no tasks to delete").sendStatus(400);
+
+    res.send("there is no tasks to delete").sendStatus(400);
   }
 });
 
