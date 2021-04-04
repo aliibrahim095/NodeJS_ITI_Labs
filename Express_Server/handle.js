@@ -49,13 +49,12 @@ function edit(path, id, newTodo ) {
     }
  }
 function deleteTask(path, id){
-    console.log("delete method from handle file");
     let todos = readFile(path);
      todos = JSON.parse(todos || "[]");
 
      if(todos.length > 0){
             //data execlude item
-            
+
              let data = todos.filter(function(item){
                 return item.id != id;
              })
