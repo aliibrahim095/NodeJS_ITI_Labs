@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 const port= 3000;
 const fs = require('fs');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // import handle methods
 myfileOperations = require('./handle.js'); 
 
@@ -30,16 +34,17 @@ todoAsHtml += "</div>";
 // 
 
 
-
 app.get(['/','/home'],function(req,res){
     res.send(todoAsHtml);
     console.log(req.url);
 })
 app.post('/post',(req,res)=>{
     //code logic for add to todo
-
-    myfileOperations.addTodo(myTodosPath,req.body);
-    res.contentType('text/javascript');
+  
+    console.log(req.body.todo);
+    const { todo }=req.body; 
+    myfileOperations.addTodo(myTodosPath,todo);
+    // res.contentType('application/json');
     return res.status(200).send("todo created successfully");
 })
 
