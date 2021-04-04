@@ -33,12 +33,14 @@ todos.forEach((element) => {
 todoAsHtml += "</div>";
 // 
 
+// app.use((req,res)=>{
 
-app.get(['/','/home'],function(req,res){
+// })
+app.get(['/','/todos'],function(req,res){
     res.send(todoAsHtml);
     console.log(req.url);
 })
-app.post('/post',(req,res)=>{
+app.post('/todos',(req,res)=>{
     //code logic for add to todo
   
     console.log(req.body.todo);
@@ -48,13 +50,15 @@ app.post('/post',(req,res)=>{
     return res.status(200).send("todo created successfully");
 })
 
-app.put('/:id', function (req, res) {
+app.patch('/todos/:id', function (req, res) {
   const id  = req.params.id;
+    const {newtodo}= req.body; 
     //code logic for edit certain todo
-    res.send('PUT request to Todos')
+    myfileOperations.edit(myTodosPath,id,newtodo);
+    res.send(`todo has id -->${id} edited sucessfully`)
 })
 
-app.delete('/delete/:id', function (req, res) {
+app.delete('/todos/:id', function (req, res) {
   const id = req.params.id;
   console.log(id);
     myfileOperations.deleteTask(myTodosPath,id);
